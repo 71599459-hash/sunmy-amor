@@ -143,11 +143,17 @@ noBtn.style.top = y + "px";
 
 if(intentos === 6){
 
+// ocultar texto y botones
 document.getElementById("contenido").style.display="none";
 
+// ocultar foto de Sunmy
+document.getElementById("foto").style.display="none";
+
+// mostrar mensaje
 document.getElementById("resultado").innerHTML =
 "🐵💔 Mejor voy a comer mi plátano… dijiste que no 🍌😢";
 
+// mostrar solo el mono
 document.getElementById("mono").style.display="block";
 
 }
@@ -160,6 +166,7 @@ document.getElementById("resultado").innerHTML =
 "💖 Gracias por aceptar 💖<br>Me haces muy feliz 🥰";
 
 document.getElementById("foto").style.display="block";
+document.getElementById("mono").style.display="none";
 
 }
 
