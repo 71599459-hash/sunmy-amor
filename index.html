@@ -28,9 +28,7 @@ position:relative;
 z-index:10;
 }
 
-h1{
-color:#ff3e8e;
-}
+h1{color:#ff3e8e;}
 
 .frase{
 font-size:16px;
@@ -48,10 +46,7 @@ cursor:pointer;
 margin:10px;
 }
 
-.si{
-background:#ff3e8e;
-color:white;
-}
+.si{background:#ff3e8e;color:white;}
 
 .no{
 background:#adb5bd;
@@ -93,7 +88,7 @@ pointer-events:none;
 
 <body>
 
-<audio id="musica" autoplay loop>
+<audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
@@ -126,6 +121,12 @@ Hoy solo quiero preguntarte algo que nace de lo más profundo de mi corazón…<
 
 let intentos = 0;
 let noBtn = document.getElementById("noBtn");
+let musica = document.getElementById("musica");
+
+/* ACTIVAR MUSICA AL HACER CLICK EN LA PAGINA */
+document.body.addEventListener("click", function(){
+musica.play();
+},{once:true});
 
 function noAceptar(){
 
@@ -143,17 +144,12 @@ noBtn.style.top = y + "px";
 
 if(intentos === 6){
 
-// ocultar texto y botones
 document.getElementById("contenido").style.display="none";
-
-// ocultar foto de Sunmy
 document.getElementById("foto").style.display="none";
 
-// mostrar mensaje
 document.getElementById("resultado").innerHTML =
 "🐵💔 Mejor voy a comer mi plátano… dijiste que no 🍌😢";
 
-// mostrar solo el mono
 document.getElementById("mono").style.display="block";
 
 }
@@ -185,9 +181,7 @@ item.className="item";
 item.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
 
 item.style.left=Math.random()*100+"vw";
-
 item.style.fontSize=(25+Math.random()*40)+"px";
-
 item.style.animationDuration=(5+Math.random()*5)+"s";
 
 document.body.appendChild(item);
@@ -199,12 +193,7 @@ setTimeout(()=>{item.remove();},10000);
 }
 
 window.onload=()=>{
-
 lanzarElementos();
-
-let musica=document.getElementById("musica");
-musica.play().catch(()=>{});
-
 };
 
 </script>
