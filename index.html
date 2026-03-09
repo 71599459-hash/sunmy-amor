@@ -60,7 +60,7 @@ position:absolute;
 }
 
 #resultado{
-margin-top:30px;
+margin-top:20px;
 font-size:18px;
 color:#ff3e8e;
 }
@@ -73,7 +73,7 @@ border-radius:25px;
 box-shadow:0 0 25px rgba(255,0,120,0.5);
 }
 
-/* ELEMENTOS QUE CAEN */
+/* LLUVIA */
 
 .item{
 position:fixed;
@@ -83,17 +83,9 @@ pointer-events:none;
 }
 
 @keyframes caer{
-0%{
-transform:translateY(-50px) rotate(0deg);
-opacity:0;
-}
-10%{
-opacity:1;
-}
-100%{
-transform:translateY(110vh) rotate(360deg);
-opacity:0;
-}
+0%{transform:translateY(-50px) rotate(0deg);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
 }
 
 </style>
@@ -101,12 +93,13 @@ opacity:0;
 
 <body>
 
-<!-- MUSICA -->
-<audio id="musica" loop>
+<audio id="musica" autoplay loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
+
+<div id="contenido">
 
 <h1>💖 Sunmy Bryana 💖</h1>
 
@@ -119,6 +112,8 @@ Hoy solo quiero preguntarte algo que nace de lo más profundo de mi corazón…<
 
 <button class="si" onclick="siAcepta()">Sí acepto 💕</button>
 <button class="no" id="noBtn" onclick="noAceptar()">No acepto 😢</button>
+
+</div>
 
 <div id="resultado"></div>
 
@@ -138,7 +133,7 @@ intentos++;
 
 if(intentos < 6){
 
-let x = Math.random()*250;
+let x = Math.random()*300;
 let y = Math.random()*200;
 
 noBtn.style.left = x + "px";
@@ -148,11 +143,12 @@ noBtn.style.top = y + "px";
 
 if(intentos === 6){
 
+document.getElementById("contenido").style.display="none";
+
 document.getElementById("resultado").innerHTML =
 "🐵💔 Mejor voy a comer mi plátano… dijiste que no 🍌😢";
 
 document.getElementById("mono").style.display="block";
-document.getElementById("foto").style.display="none";
 
 }
 
@@ -164,48 +160,42 @@ document.getElementById("resultado").innerHTML =
 "💖 Gracias por aceptar 💖<br>Me haces muy feliz 🥰";
 
 document.getElementById("foto").style.display="block";
-document.getElementById("mono").style.display="none";
 
 }
 
-/* LLUVIA DE ROSAS CHOCOLATES BESOS MONITOS */
+/* lluvia */
 
 function lanzarElementos(){
 
-let emojis = ["🌹","💋","🍫","🐵","💖"];
+let emojis=["🌹","💋","🍫","🐵","💖"];
 
 setInterval(()=>{
 
-let item = document.createElement("div");
+let item=document.createElement("div");
 
-item.className = "item";
+item.className="item";
 
-item.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+item.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
 
-item.style.left = Math.random()*100 + "vw";
+item.style.left=Math.random()*100+"vw";
 
-item.style.fontSize = (25 + Math.random()*40) + "px";
+item.style.fontSize=(25+Math.random()*40)+"px";
 
-item.style.animationDuration = (5 + Math.random()*5) + "s";
+item.style.animationDuration=(5+Math.random()*5)+"s";
 
 document.body.appendChild(item);
 
-setTimeout(()=>{
-item.remove();
-},10000);
+setTimeout(()=>{item.remove();},10000);
 
 },120);
 
 }
 
-/* INICIO */
-
-window.onload = ()=>{
+window.onload=()=>{
 
 lanzarElementos();
 
-/* intentar reproducir música */
-let musica = document.getElementById("musica");
+let musica=document.getElementById("musica");
 musica.play().catch(()=>{});
 
 };
