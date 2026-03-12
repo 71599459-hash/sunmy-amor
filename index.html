@@ -1,1 +1,284 @@
-<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <title>Para Sunmy Bryana 💖</title> <style> body{ margin:0; height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#ffd6e8,#ffeaf3); overflow:hidden; font-family:'Segoe UI', sans-serif; } /* LOGIN */ .login{ background:white; padding:40px; border-radius:25px; box-shadow:0 0 25px rgba(255,105,180,0.4); text-align:center; } input{ width:230px; padding:12px; margin:10px; border-radius:20px; border:1px solid #ccc; font-size:14px; } .login button{ background:#ff3e8e; color:white; padding:12px 30px; border:none; border-radius:20px; cursor:pointer; font-size:15px; } #error{ color:red; margin-top:10px; } /* CARTA */ .card{ display:none; background:white; width:420px; padding:30px; border-radius:30px; box-shadow:0 0 30px rgba(255,105,180,0.4); text-align:center; position:relative; z-index:10; } h1{color:#ff3e8e;} .frase{ font-size:16px; color:#555; line-height:1.6; margin-bottom:20px; } button{ padding:15px 30px; border:none; border-radius:30px; font-size:16px; cursor:pointer; margin:10px; } .si{background:#ff3e8e;color:white;} .no{ background:#adb5bd; color:white; position:absolute; } #resultado{ margin-top:20px; font-size:18px; color:#ff3e8e; } .imagenGrande{ display:none; width:280px; margin:20px auto; border-radius:25px; box-shadow:0 0 25px rgba(255,0,120,0.5); } /* LLUVIA */ .item{ position:fixed; top:-50px; animation: caer linear infinite; pointer-events:none; } @keyframes caer{ 0%{transform:translateY(-50px) rotate(0deg);opacity:0;} 10%{opacity:1;} 100%{transform:translateY(110vh) rotate(360deg);opacity:0;} } </style> </head> <body> <audio id="musica" loop> <source src="musica.mp3" type="audio/mpeg"> </audio> <!-- LOGIN --> <div class="login" id="login"> <h2>💖 Bienvenida 💖</h2> <input type="text" id="user" placeholder="Ingresa tu DNI 💕"><br> <input type="password" id="pass" placeholder="Contraseña 💖"><br> <button onclick="login()">Entrar</button> <p id="error"></p> </div> <!-- CARTA --> <div class="card" id="carta"> <div id="contenido"> <h1>💖 Sunmy Bryana 💖</h1> <div class="frase"> Desde que llegaste a mi vida todo se volvió más bonito.<br> Tu sonrisa ilumina mis días y tu presencia hace que mi corazón lata más fuerte.<br> Hoy solo quiero preguntarte algo que nace de lo más profundo de mi corazón…<br> <strong>¿Quieres ser mi enamorada?</strong> 💕✨ </div> <button class="si" onclick="siAcepta()">Sí acepto 💕</button> <button class="no" id="noBtn" onclick="noAceptar()">No acepto 😢</button> </div> <div id="resultado"></div> <img src="sunmy.jpeg" id="foto" class="imagenGrande"> <img src="mono.png" id="mono" class="imagenGrande"> </div> <script> /* LOGIN */ function login(){ let usuario=document.getElementById("user").value; let contraseña=document.getElementById("pass").value; if(usuario==="76138059" && contraseña==="76138059"){ document.getElementById("login").style.display="none"; document.getElementById("carta").style.display="block"; }else{ document.getElementById("error").innerText="Vuelve a poner tu usuario o contraseña amor 💕"; } } /* MUSICA */ let musica=document.getElementById("musica"); document.body.addEventListener("click", function(){ musica.play(); },{once:true}); /* BOTON NO */ let intentos=0; let noBtn=document.getElementById("noBtn"); function noAceptar(){ intentos++; if(intentos<6){ let x=Math.random()*300; let y=Math.random()*200; noBtn.style.left=x+"px"; noBtn.style.top=y+"px"; } if(intentos===6){ document.getElementById("contenido").style.display="none"; document.getElementById("foto").style.display="none"; document.getElementById("resultado").innerHTML= "🐵💔 Mejor voy a comer mi plátano… dijiste que no 🍌😢"; document.getElementById("mono").style.display="block"; } } /* ACEPTAR */ function siAcepta(){ document.getElementById("resultado").innerHTML= "💖 Gracias por aceptar 💖<br>Me haces muy feliz 🥰"; document.getElementById("foto").style.display="block"; document.getElementById("mono").style.display="none"; } /* LLUVIA */ function lanzarElementos(){ let emojis=["🌹","💋","🍫","🐵","💖"]; setInterval(()=>{ let item=document.createElement("div"); item.className="item"; item.innerHTML=emojis[Math.floor(Math.random()*emojis.length)]; item.style.left=Math.random()*100+"vw"; item.style.fontSize=(25+Math.random()*40)+"px"; item.style.animationDuration=(5+Math.random()*5)+"s"; document.body.appendChild(item); setTimeout(()=>{item.remove();},10000); },120); } window.onload=()=>{ lanzarElementos(); }; </script> </body> </html>
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Sunmy Bryana 💖</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e8,#ffeaf3);
+overflow:hidden;
+font-family:'Segoe UI', sans-serif;
+}
+
+/* LOGIN */
+
+.login{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,105,180,0.4);
+text-align:center;
+}
+
+input{
+width:230px;
+padding:12px;
+margin:10px;
+border-radius:20px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+.login button{
+background:#ff3e8e;
+color:white;
+padding:12px 30px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-size:15px;
+}
+
+#error{
+color:red;
+margin-top:10px;
+}
+
+/* CARTA */
+
+.card{
+display:none;
+background:white;
+width:420px;
+padding:30px;
+border-radius:30px;
+box-shadow:0 0 30px rgba(255,105,180,0.4);
+text-align:center;
+position:relative;
+z-index:10;
+}
+
+h1{color:#ff3e8e;}
+
+.frase{
+font-size:16px;
+color:#555;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+}
+
+.si{background:#ff3e8e;color:white;}
+
+.no{
+background:#adb5bd;
+color:white;
+position:absolute;
+}
+
+#resultado{
+margin-top:20px;
+font-size:18px;
+color:#ff3e8e;
+}
+
+.imagenGrande{
+display:none;
+width:280px;
+margin:20px auto;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,0,120,0.5);
+}
+
+/* LLUVIA */
+
+.item{
+position:fixed;
+top:-50px;
+animation: caer linear infinite;
+pointer-events:none;
+}
+
+@keyframes caer{
+0%{transform:translateY(-50px) rotate(0deg);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- LOGIN -->
+
+<div class="login" id="login">
+
+<h2>💖 Bienvenida 💖</h2>
+
+<input type="text" id="user" placeholder="Ingresa tu DNI 💕"><br>
+<input type="password" id="pass" placeholder="Contraseña 💖"><br>
+
+<button onclick="login()">Entrar</button>
+
+<p id="error"></p>
+
+</div>
+
+<!-- CARTA -->
+
+<div class="card" id="carta">
+
+<div id="contenido">
+
+<h1>💖 Sunmy Bryana 💖</h1>
+
+<div class="frase">
+Desde que llegaste a mi vida todo se volvió más bonito.<br>
+Tu sonrisa ilumina mis días y tu presencia hace que mi corazón lata más fuerte.<br>
+Hoy solo quiero preguntarte algo que nace de lo más profundo de mi corazón…<br>
+<strong>¿Quieres ser mi enamorada?</strong> 💕✨
+</div>
+
+<button class="si" onclick="siAcepta()">Sí acepto 💕</button>
+<button class="no" id="noBtn" onclick="noAceptar()">No acepto 😢</button>
+
+</div>
+
+<div id="resultado"></div>
+
+<img src="sunmy.jpeg" id="foto" class="imagenGrande">
+<img src="mono.png" id="mono" class="imagenGrande">
+
+</div>
+
+<script>
+
+/* LOGIN */
+
+function login(){
+
+let usuario=document.getElementById("user").value;
+let contraseña=document.getElementById("pass").value;
+
+if(usuario==="76138059" && contraseña==="76138059"){
+
+document.getElementById("login").style.display="none";
+document.getElementById("carta").style.display="block";
+
+}else{
+
+document.getElementById("error").innerText="Vuelve a poner tu usuario o contraseña amor 💕";
+
+}
+
+}
+
+/* MUSICA */
+
+let musica=document.getElementById("musica");
+
+document.body.addEventListener("click", function(){
+musica.play();
+},{once:true});
+
+/* BOTON NO */
+
+let intentos=0;
+let noBtn=document.getElementById("noBtn");
+
+function noAceptar(){
+
+intentos++;
+
+if(intentos<6){
+
+let x=Math.random()*300;
+let y=Math.random()*200;
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+}
+
+if(intentos===6){
+
+document.getElementById("contenido").style.display="none";
+document.getElementById("foto").style.display="none";
+
+document.getElementById("resultado").innerHTML=
+"🐵💔 Mejor voy a comer mi plátano… dijiste que no 🍌😢";
+
+document.getElementById("mono").style.display="block";
+
+}
+
+}
+
+/* ACEPTAR */
+
+function siAcepta(){
+
+document.getElementById("resultado").innerHTML=
+"💖 Gracias por aceptar 💖<br>Me haces muy feliz 🥰";
+
+document.getElementById("foto").style.display="block";
+document.getElementById("mono").style.display="none";
+
+}
+
+/* LLUVIA */
+
+function lanzarElementos(){
+
+let emojis=["🌹","💋","🍫","🐵","💖"];
+
+setInterval(()=>{
+
+let item=document.createElement("div");
+
+item.className="item";
+
+item.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+item.style.left=Math.random()*100+"vw";
+item.style.fontSize=(25+Math.random()*40)+"px";
+item.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(item);
+
+setTimeout(()=>{item.remove();},10000);
+
+},120);
+
+}
+
+window.onload=()=>{
+lanzarElementos();
+};
+
+</script>
+
+</body>
+</html>
+```
